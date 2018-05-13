@@ -1,12 +1,12 @@
 /*
- * Create a list that holds all of your cards
+ * Create a list that holds all of your cards--ME:create an array that holds the li's??
  */
 
 
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
+ *   - loop through each card and create its HTML--ME: attach i to li???
  *   - add each card's HTML to the page
  */
 
