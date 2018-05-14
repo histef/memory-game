@@ -55,9 +55,15 @@ return iconTag;
 
  /*ME:  add each element[i] in JS array to the existing li's in html*/
 /*attach card(li) to UL */
+
+
+
 const cardFragment = document.createDocumentFragment();
 
 cardArray.forEach(function(i){
+	const grabLi = document.querySelector('.deck');
+	grabLi.innerHTML = '';
+
 	const createLi = document.createElement('li');
 	createLi.classList.add("card");
 	createLi.innerHTML = `<i class="fa ${i}"></i>`;
