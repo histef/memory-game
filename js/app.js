@@ -56,14 +56,12 @@ return iconTag;
  /*ME:  add each element[i] in JS array to the existing li's in html*/
 /*attach card(li) to UL */
 
-
-
-const cardFragment = document.createDocumentFragment();
-
 shuffle(cardArray);
 
+const cardFragment = document.createDocumentFragment();
+const grabLi = document.querySelector('.deck');
+
 cardArray.forEach(function(i){
-	const grabLi = document.querySelector('.deck');
 	grabLi.innerHTML = '';
 
 	const createLi = document.createElement('li');
@@ -97,13 +95,12 @@ function makeUL(array) {
 
 // Add the contents of options[0] to #foo:
 document.getElementById('foo').appendChild(makeUL(options[0]));
-
-***
+***end of example
 
 */
 
 /*
- * set up the event listener for a card. If a card is clicked:
+ * (1)set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)--.push();
  *  - if the list already has another card, check to see if the two cards match--if/else
@@ -112,3 +109,24 @@ document.getElementById('foo').appendChild(makeUL(options[0]));
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)--for loop
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+ /*(1): add event listener on parent. e.target*/
+ 
+/*function flipCard(e){
+	if (e.target.nodeName.toLowerCase() === 'li'){
+	 --e.target the specific li?
+	e.target.classList.add('card.open'); --maybe use toggle
+	console.log(e.target);
+	
+};*/
+
+const card = document.querySelector('.card');
+
+const flipCard = function(e){
+	if (e.target.nodeName.toLowerCase() === 'li' 
+		|| e.target.nodeName.toLowerCase() === 'i'){
+			e.target.classList.add('show');
+	}
+};
+
+grabLi.addEventListener('click', flipCard);
