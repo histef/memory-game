@@ -41,11 +41,57 @@ function shuffle(cardArray) {
 
     return cardArray;
 }
- /*ME:
+
+/*ME: remove class names from <i> then add classname from array + 'fa'
+function arrayToIconTag(){
+const grabIconTag = document.getElementsByTag('i');
+for(let i = 0, i < grabIconTag.length; i++){
+let iconTag = grabIconTag.classList.remove('fa-*');
+iconTag = grabIconTag.classList.add(cardArray[i]);
+}
+return iconTag;
+}
+*/
+
+ /*ME:  add each element[i] in JS array to the existing li's in html*/
+/*attach card(li) to UL */
+const cardFragment = document.createDocumentFragment();
+
 cardArray.forEach(function(i){
-	let createEl = document.createElement('li');
-	ul.appendChild(createEl);
+	const createLi = document.createElement('li');
+	createLi.classList.add("card");
+	createLi.innerHTML = `<i class="fa ${i}"></i>`;
+	cardFragment.appendChild(createLi);
 });
+document.querySelector('.deck').appendChild(cardFragment);
+
+
+/*
+***StackOverflow Example:
+function makeUL(array) {
+    // Create the list element:
+    var list = document.createElement('ul');
+
+    for(var i = 0; i < array.length; i++) {
+        // Create the list item:
+        var item = document.createElement('li');
+
+        // Set its contents:
+        item.appendChild(document.createTextNode(array[i]));
+
+        // Add it to the list:
+        list.appendChild(item);
+    }
+
+    // Finally, return the constructed list:
+    return list;
+}
+
+// Add the contents of options[0] to #foo:
+document.getElementById('foo').appendChild(makeUL(options[0]));
+
+***
+
 */
 
 /*
