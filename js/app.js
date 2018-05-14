@@ -60,6 +60,8 @@ return iconTag;
 
 const cardFragment = document.createDocumentFragment();
 
+shuffle(cardArray);
+
 cardArray.forEach(function(i){
 	const grabLi = document.querySelector('.deck');
 	grabLi.innerHTML = '';
