@@ -101,8 +101,8 @@ document.getElementById('foo').appendChild(makeUL(options[0]));
 
 /*
  * (1)set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)--.push();
+ *  (1a) display the card's symbol (put this functionality in another function that you call from this one)
+ * (2)- add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)--.push();
  *  - if the list already has another card, check to see if the two cards match--if/else
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)--e.preventdefault
@@ -111,22 +111,34 @@ document.getElementById('foo').appendChild(makeUL(options[0]));
  */
 
  /*(1): add event listener on parent. e.target*/
- 
-/*function flipCard(e){
-	if (e.target.nodeName.toLowerCase() === 'li'){
-	 --e.target the specific li?
-	e.target.classList.add('card.open'); --maybe use toggle
-	console.log(e.target);
-	
-};*/
-
-const card = document.querySelector('.card');
-
 const flipCard = function(e){
-	if (e.target.nodeName.toLowerCase() === 'li' 
-		|| e.target.nodeName.toLowerCase() === 'i'){
+	if (e.target.nodeName.toLowerCase() === 'li'){
 			e.target.classList.add('show');
 	}
 };
 
 grabLi.addEventListener('click', flipCard);
+
+/*(2)*/
+let showCardList = [];
+
+const liItem = grabLi.querySelectorAll('.card'); /*this is working*/
+/*check each li for a class name show. grabbing nodelist item can't use push cuz its an array method? push the i */
+liItem.forEach(function(i){
+	if (i.classList.contains('show') === true){
+	showCardList.push(i);
+	}
+	return showCardList;
+});
+
+console.log(showCardList);
+
+/* if (showCardList[0] === showCardList[1]){
+	match!!!
+}
+*/
+
+/* if (showCardList[0] !== showCardList[1]){
+	no match, flip cards back to hidden.
+}
+*/
