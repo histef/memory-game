@@ -110,34 +110,43 @@ document.getElementById('foo').appendChild(makeUL(options[0]));
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
- /*(1): add event listener on parent. e.target*/
+/*(1): add event listener on parent. e.target
+* (2):  push e.target to clicked card list;
+*/
+let showCardList = [];
+
 const flipCard = function(e){
 	if (e.target.nodeName.toLowerCase() === 'li'){
 			e.target.classList.add('show');
+			showCardList.push(e.target.firstChild.className);
+}
 	}
 };
 
+
+
 grabLi.addEventListener('click', flipCard);
 
-/*(2)*/
-let showCardList = [];
-
+/*(2) different way
 const liItem = grabLi.querySelectorAll('.card'); /*this is working*/
-/*check each li for a class name show. grabbing nodelist item can't use push cuz its an array method? push the i */
+/*check each li for a class name show. grabbing nodelist item can't use push cuz its an array method? push the i
 liItem.forEach(function(i){
 	if (i.classList.contains('show') === true){
 	showCardList.push(i);
 	}
-	return showCardList;
 });
-
+*/
 console.log(showCardList);
 
-/* if (showCardList[0] === showCardList[1]){
-	match!!!
-}
-*/
+/*
+function isMatch(){
+if (showCardList[0] === showCardList[1]){
+	console.log('match');
+	}
+};
 
+isMatch();
+*/
 /* if (showCardList[0] !== showCardList[1]){
 	no match, flip cards back to hidden.
 }
