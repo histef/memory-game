@@ -75,21 +75,7 @@ document.querySelector('.deck').appendChild(cardFragment);
 */
 let showCardList = [];
 let matchCount = 0;
-
-const flipCard = function(e){
-	if (e.target.nodeName.toLowerCase() === 'li'
-		&& !e.target.classList.contains('show')
-		&& showCardList.length < 2){
-			e.target.classList.add('show');
-			showCardList.push(e.target);
-/*have to run checkMatch() in here, to call function*/
-	}
-
-/*check if two showing cards match function*/
-	if (showCardList.length === 2){
-			checkMatch();
-		}
-};
+let starCounter = 3;
 
 function checkMatch(){ 
 	if (showCardList[0].innerHTML === showCardList[1].innerHTML){
@@ -105,12 +91,39 @@ function checkMatch(){
 			showCardList[0].classList.toggle('mismatch');
 			showCardList[1].classList.toggle('mismatch');
 			showCardList.splice(0, 2);
-		}, 2000);
+		}, 1000);
 		showCardList[0].classList.toggle('mismatch');
 		showCardList[1].classList.toggle('mismatch');
+		/*remove star*/
+		starCounter--;
+		if (starCounter === 0){
+			alert('you\'ve lost. Give it another go!');
+			/*reset game*/
+		}
 	};
 };
 
+/*event listener, run game*/
+const flipCard = function(e){
+	if (e.target.nodeName.toLowerCase() === 'li'
+		&& !e.target.classList.contains('show')
+		&& showCardList.length < 2){
+			e.target.classList.add('show');
+			showCardList.push(e.target);
+	}
+	/*have to run checkMatch() in here, to call function*/
+	/*check if two showing cards match function*/
+	if (showCardList.length === 2){
+			checkMatch();
+		};
+
+	/*win game, run modal*/
+	if(matchCount === 8) {
+		setTimeout(function(){
+		alert('you won!!!');
+		}, 1000);
+	}
+};
 
 grabLi.addEventListener('click', flipCard);
 
