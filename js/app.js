@@ -80,25 +80,30 @@ const flipCard = function(e){
 		&& !e.target.classList.contains('show')
 		&& showCardList.length < 2){
 			e.target.classList.add('show');
-			showCardList.push(e.target.firstChild.className);
+			showCardList.push(e.target);
+/*have to run checkMatch() in here, to call function*/
+	}
+
+/*check if two showing cards match function*/
+	function checkMatch(){ /*working but bug-not showing card two before removing 'show'*/
+		if (showCardList[0] === showCardList[1]){
+			showCardList[0].classList.add('match');
+			showCardList[1].classList.add('match');
+
+
+		} else if (showCardList[0] !== showCardList[1]){
+			showCardList[0].classList.toggle('mismatch');
+			showCardList[1].classList.toggle('mismatch');
+			showCardList[0].classList.remove('show');
+			showCardList[1].classList.remove('show');
+		}
+	};
+
+	if (showCardList.length === 2){
+			checkMatch();
 
 		}
 };
 
 grabLi.addEventListener('click', flipCard);
-
-/*check if two showing cards match function*/
-function checkMatch(){
-	if (showCardList[0] === showCardList[1]){
-		showCardList[0].classList.add('match');
-		showCardList[1].classList.add('match');
-	} else if (showCardList[0] !== showCardList[1]){
-		showCardList[0].classList.remove('show');
-		showCardList[1].classList.remove('show');
-	}
-};
-
-if (showCardList.length === 2){
-	checkMatch();
-}
 
