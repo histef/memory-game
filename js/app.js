@@ -1,8 +1,6 @@
-/* ME: need to reassign each card to the shuffled icon 
- * Create a list that holds all of your cards--ME:create an array that holds the li's??
- * 
- */ 
+/* Reassign each card with a shuffled icon */
 
+/*shuffled icon array*/
 const cardArray = ['fa-diamond',
 				   'fa-diamond',
 				   'fa-paper-plane-o',
@@ -41,17 +39,6 @@ function shuffle(cardArray) {
 
     return cardArray;
 }
-
-/*ME: remove class names from <i> then add classname from array + 'fa'
-function arrayToIconTag(){
-const grabIconTag = document.getElementsByTag('i');
-for(let i = 0, i < grabIconTag.length; i++){
-let iconTag = grabIconTag.classList.remove('fa-*');
-iconTag = grabIconTag.classList.add(cardArray[i]);
-}
-return iconTag;
-}
-*/
 
  /*ME:  add each element[i] in JS array to the existing li's in html*/
 /*attach card(li) to UL */
@@ -100,30 +87,18 @@ const flipCard = function(e){
 
 grabLi.addEventListener('click', flipCard);
 
-/*stop card .show and showCardlist array push more than 2*/
+/*check if two showing cards match function*/
 function checkMatch(){
- if (showCardList[0] === showCardList[1]){
-	showCardList[0].classList.add('match');
-	showCardList[1].classList.add('match');
-} else if (showCardList[0] !== showCardList[1]){
-	showCardList[0].classList.remove('show');
-	showCardList[1].classList.remove('show');
-}
+	if (showCardList[0] === showCardList[1]){
+		showCardList[0].classList.add('match');
+		showCardList[1].classList.add('match');
+	} else if (showCardList[0] !== showCardList[1]){
+		showCardList[0].classList.remove('show');
+		showCardList[1].classList.remove('show');
+	}
 };
-
 
 if (showCardList.length === 2){
 	checkMatch();
 }
 
-
-
-/*(2) different way
-const liItem = grabLi.querySelectorAll('.card'); /*this is working*/
-/*check each li for a class name show. grabbing nodelist item can't use push cuz its an array method? push the i
-liItem.forEach(function(i){
-	if (i.classList.contains('show') === true){
-	showCardList.push(i);
-	}
-});
-*/
