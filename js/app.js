@@ -74,6 +74,7 @@ document.querySelector('.deck').appendChild(cardFragment);
 * (2):  push e.target to clicked card list;
 */
 let showCardList = [];
+let matchCount = 0;
 
 const flipCard = function(e){
 	if (e.target.nodeName.toLowerCase() === 'li'
@@ -85,25 +86,31 @@ const flipCard = function(e){
 	}
 
 /*check if two showing cards match function*/
-	function checkMatch(){ /*working but bug-not showing card two before removing 'show'*/
-		if (showCardList[0] === showCardList[1]){
-			showCardList[0].classList.add('match');
-			showCardList[1].classList.add('match');
-
-
-		} else if (showCardList[0] !== showCardList[1]){
-			showCardList[0].classList.toggle('mismatch');
-			showCardList[1].classList.toggle('mismatch');
-			showCardList[0].classList.remove('show');
-			showCardList[1].classList.remove('show');
-		}
-	};
-
 	if (showCardList.length === 2){
 			checkMatch();
-
 		}
 };
+
+function checkMatch(){ 
+	if (showCardList[0].innerHTML === showCardList[1].innerHTML){
+		showCardList[0].classList.add('match');
+		showCardList[1].classList.add('match');
+		showCardList.splice(0,2);
+		matchCount++;
+	} 
+	else /*if (showCardList[0] !== showCardList[1])*/{
+		setTimeout(function(){
+			showCardList[0].classList.remove('show');
+			showCardList[1].classList.remove('show');
+			showCardList[0].classList.toggle('mismatch');
+			showCardList[1].classList.toggle('mismatch');
+			showCardList.splice(0, 2);
+		}, 2000);
+		showCardList[0].classList.toggle('mismatch');
+		showCardList[1].classList.toggle('mismatch');
+	};
+};
+
 
 grabLi.addEventListener('click', flipCard);
 
