@@ -73,33 +73,6 @@ document.querySelector('.deck').appendChild(cardFragment);
 
 
 /*
-***StackOverflow Example:
-function makeUL(array) {
-    // Create the list element:
-    var list = document.createElement('ul');
-
-    for(var i = 0; i < array.length; i++) {
-        // Create the list item:
-        var item = document.createElement('li');
-
-        // Set its contents:
-        item.appendChild(document.createTextNode(array[i]));
-
-        // Add it to the list:
-        list.appendChild(item);
-    }
-
-    // Finally, return the constructed list:
-    return list;
-}
-
-// Add the contents of options[0] to #foo:
-document.getElementById('foo').appendChild(makeUL(options[0]));
-***end of example
-
-*/
-
-/*
  * (1)set up the event listener for a card. If a card is clicked:
  *  (1a) display the card's symbol (put this functionality in another function that you call from this one)
  * (2)- add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)--.push();
@@ -116,16 +89,34 @@ document.getElementById('foo').appendChild(makeUL(options[0]));
 let showCardList = [];
 
 const flipCard = function(e){
-	if (e.target.nodeName.toLowerCase() === 'li'){
+	if (e.target.nodeName.toLowerCase() === 'li'
+		&& !e.target.classList.contains('show')
+		&& showCardList.length < 2){
 			e.target.classList.add('show');
 			showCardList.push(e.target.firstChild.className);
+
+		}
+};
+
+grabLi.addEventListener('click', flipCard);
+
+/*stop card .show and showCardlist array push more than 2*/
+function checkMatch(){
+ if (showCardList[0] === showCardList[1]){
+	showCardList[0].classList.add('match');
+	showCardList[1].classList.add('match');
+} else if (showCardList[0] !== showCardList[1]){
+	showCardList[0].classList.remove('show');
+	showCardList[1].classList.remove('show');
 }
-	}
 };
 
 
+if (showCardList.length === 2){
+	checkMatch();
+}
 
-grabLi.addEventListener('click', flipCard);
+
 
 /*(2) different way
 const liItem = grabLi.querySelectorAll('.card'); /*this is working*/
@@ -135,19 +126,4 @@ liItem.forEach(function(i){
 	showCardList.push(i);
 	}
 });
-*/
-console.log(showCardList);
-
-/*
-function isMatch(){
-if (showCardList[0] === showCardList[1]){
-	console.log('match');
-	}
-};
-
-isMatch();
-*/
-/* if (showCardList[0] !== showCardList[1]){
-	no match, flip cards back to hidden.
-}
 */
