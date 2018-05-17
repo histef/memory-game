@@ -104,12 +104,13 @@ function checkMatch(){
 	};
 };
 
+const wrongMove = document.querySelector('.wrongMove');
+
 function starsPanel(){
 	if (moveCount % 2 === 0){
 		const getStar = document.querySelector('.fa-star');
 		getStar.remove();	
 		starCounter--;
-		const wrongMove = document.querySelector('.wrongMove');
 		wrongMove.textContent--;
 	}
 		setTimeout(function(){
@@ -125,6 +126,7 @@ function reset(){
 	matchCount = 0;
 	starCounter = 3;
 	moveCount = 0;
+	wrongMove.textContent = 3;
 	createBoard();
 /*	-grabLi.innerHTML.classList.remove('show');selectAll OR shuffle and once redo deck should remove all???
 	-add star li's back
