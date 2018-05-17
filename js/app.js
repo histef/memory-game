@@ -43,10 +43,12 @@ function shuffle(cardArray) {
  /*ME:  add each element[i] in JS array to the existing li's in html*/
 /*attach card(li) to UL */
 
-shuffle(cardArray);
 
 const cardFragment = document.createDocumentFragment();
 const grabLi = document.querySelector('.deck');
+
+function createBoard(){
+shuffle(cardArray);
 
 cardArray.forEach(function(i){
 	grabLi.innerHTML = '';
@@ -57,8 +59,9 @@ cardArray.forEach(function(i){
 	cardFragment.appendChild(createLi);
 });
 document.querySelector('.deck').appendChild(cardFragment);
+};
 
-
+createBoard();
 /*
  * (1)set up the event listener for a card. If a card is clicked:
  *  (1a) display the card's symbol (put this functionality in another function that you call from this one)
@@ -85,7 +88,7 @@ function checkMatch(){
 		showCardList.splice(0,2);
 		matchCount++;
 	} 
-	else /*if (showCardList[0] !== showCardList[1])*/{
+	else /*if (showCardList[0].innerHTML !== showCardList[1].innerHTML)*/{
 		setTimeout(function(){
 			showCardList[0].classList.remove('show');
 			showCardList[1].classList.remove('show');
@@ -117,15 +120,16 @@ function starsPanel(){
 		}, 0);
 };
 
-/*function reset(){
-	shuffle(cardArray);
+function reset(){
 	showCardList = [];
 	matchCount = 0;
 	starCounter = 3;
 	moveCount = 0;
+	createBoard();
+/*	-grabLi.innerHTML.classList.remove('show');selectAll OR shuffle and once redo deck should remove all???
 	-add star li's back
-	-restart timer
-}*/
+	-restart timer */
+}
 
 /*event listener, run game*/
 const flipCard = function(e){
@@ -150,4 +154,7 @@ const flipCard = function(e){
 	}
 };
 
+const resetIcon = document.querySelector('.reset');
+
 grabLi.addEventListener('click', flipCard);
+resetIcon.addEventListener('click', reset);
