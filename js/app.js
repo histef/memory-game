@@ -76,6 +76,7 @@ document.querySelector('.deck').appendChild(cardFragment);
 let showCardList = [];
 let matchCount = 0;
 let starCounter = 3;
+let moveCount = 0;
 
 function checkMatch(){ 
 	if (showCardList[0].innerHTML === showCardList[1].innerHTML){
@@ -91,17 +92,40 @@ function checkMatch(){
 			showCardList[0].classList.toggle('mismatch');
 			showCardList[1].classList.toggle('mismatch');
 			showCardList.splice(0, 2);
-		}, 1000);
+		}, 1500);
 		showCardList[0].classList.toggle('mismatch');
 		showCardList[1].classList.toggle('mismatch');
-		/*remove star*/
-		starCounter--;
-		if (starCounter === 0){
-			alert('you\'ve lost. Give it another go!');
-			/*reset game*/
-		}
+		/*remove star function*/
+		moveCount++;
+		starsPanel();
 	};
 };
+
+function starsPanel(){
+	if (moveCount % 2 === 0){
+		const getStar = document.querySelector('.fa-star');
+		getStar.remove();	
+		starCounter--;
+		const wrongMove = document.querySelector('.wrongMove');
+		wrongMove.textContent--;
+	}
+		setTimeout(function(){
+			if (starCounter === 0){
+				alert('you\'ve lost. Give it another go!');
+				/*reset game modal*/
+			} 
+		}, 0);
+};
+
+/*function reset(){
+	shuffle(cardArray);
+	showCardList = [];
+	matchCount = 0;
+	starCounter = 3;
+	moveCount = 0;
+	-add star li's back
+	-restart timer
+}*/
 
 /*event listener, run game*/
 const flipCard = function(e){
@@ -122,8 +146,8 @@ const flipCard = function(e){
 		setTimeout(function(){
 		alert('you won!!!');
 		}, 1000);
+		/*stop timer and display time*/
 	}
 };
 
 grabLi.addEventListener('click', flipCard);
-
