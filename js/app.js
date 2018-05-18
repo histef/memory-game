@@ -45,13 +45,13 @@ function shuffle(cardArray) {
 
 
 const cardFragment = document.createDocumentFragment();
-const grabLi = document.querySelector('.deck');
+const grabDeck = document.querySelector('.deck');
 
 function createBoard(){
 shuffle(cardArray);
+grabDeck.innerHTML = '';
 
 cardArray.forEach(function(i){
-	grabLi.innerHTML = '';
 
 	const createLi = document.createElement('li');
 	createLi.classList.add("card");
@@ -121,6 +121,19 @@ function starsPanel(){
 		}, 0);
 };
 
+
+const grabStars = document.querySelector('.stars');
+
+function resetStars(){
+	grabStars.innerHTML = '';
+	for (i=0; i<3; i++){
+	const createStar = document.createElement('li');
+	createStar.innerHTML = `<i class="fa fa-star"></i>`;
+	grabStars.appendChild(createStar);
+	}
+};
+
+
 function reset(){
 	showCardList = [];
 	matchCount = 0;
@@ -128,7 +141,8 @@ function reset(){
 	moveCount = 0;
 	wrongMove.textContent = 3;
 	createBoard();
-/*	-grabLi.innerHTML.classList.remove('show');selectAll OR shuffle and once redo deck should remove all???
+	resetStars();
+/*	-grabDeck.innerHTML.classList.remove('show');selectAll OR shuffle and once redo deck should remove all???
 	-add star li's back
 	-restart timer */
 }
@@ -158,5 +172,5 @@ const flipCard = function(e){
 
 const resetIcon = document.querySelector('.reset');
 
-grabLi.addEventListener('click', flipCard);
+grabDeck.addEventListener('click', flipCard);
 resetIcon.addEventListener('click', reset);
