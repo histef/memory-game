@@ -103,6 +103,7 @@ let showCardList = [];
 let matchCount = 0;
 let starCounter = 3;
 let moveCount = 0;
+const grabMoves = document.querySelector('.moves');
 
 function checkMatch() {
     if (showCardList[0].innerHTML === showCardList[1].innerHTML) {
@@ -122,6 +123,7 @@ function checkMatch() {
         showCardList[1].classList.toggle('mismatch');
         /*remove star function*/
         moveCount++;
+        grabMoves.textContent++;
         starsPanel();
     };
 };
@@ -162,6 +164,7 @@ function reset() {
     matchCount = 0;
     starCounter = 3;
     moveCount = 0;
+    grabMoves.textContent = 0;
     wrongMove.textContent = 3;
     secs = 0;
     mins = 0;
