@@ -56,7 +56,7 @@ h1 {
     height: 125px;
     width: 125px;
     background: #2e3d49;
-    font-size: 10px; /*changes when card is opened to show icon*/
+    font-size: 0px; /*changes when card is opened to show icon*/
     color: #ffffff;
     border-radius: 8px;
     cursor: pointer;
@@ -96,8 +96,11 @@ h1 {
  */
 
 .score-panel {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: wrap;
     text-align: left;
-    width: 345px;
+    width: 60%;
     margin-bottom: 10px;
 }
 
@@ -113,7 +116,23 @@ h1 {
     display: inline-block;
 }
 
+.lives {
+    margin: 0 5px;
+    padding: 0;
+}
+
+.moveCounter{
+    margin: 0 5px;
+    padding: 0;    
+}
+
+.time {
+    margin: 0 5px;
+    padding: 0;
+}
+
 .score-panel .reset {
     float: right;
     cursor: pointer;
+    margin: 0 5px;
 }
