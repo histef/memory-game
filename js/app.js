@@ -131,7 +131,7 @@ function checkMatch() {
 const wrongMove = document.querySelector('.wrongMove');
 
 function starsPanel() {
-    if (moveCount % 2 === 0) {
+    if (moveCount % 3 === 0) {
         const getStar = document.querySelector('.fa-star');
         getStar.remove();
         starCounter--;
@@ -191,7 +191,7 @@ const flipCard = function(e) {
     /*win game, run modal*/
     if (matchCount === 8) {
         setTimeout(function() {
-            alert(`you won!!!`);
+            winModal();
         }, 1000);
         clearInterval(interval);
         /*stop timer and display time*/
@@ -199,6 +199,29 @@ const flipCard = function(e) {
 };
 
 const resetIcon = document.querySelector('.reset');
+
+// Get the modal
+var modal = document.querySelector('#myModal');
+
+// Get the <span> element that closes the modal
+var closeBtn = document.querySelector(".closeBtn");
+
+// When the user clicks the button, open the modal 
+function winModal() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+closeBtn.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
 
 grabDeck.addEventListener('click', timer);
 grabDeck.addEventListener('click', flipCard);

@@ -56,7 +56,7 @@ h1 {
     height: 125px;
     width: 125px;
     background: #2e3d49;
-    font-size: 0px; /*changes when card is opened to show icon*/
+    font-size: 20px; /*changes when card is opened to show icon*/
     color: #ffffff;
     border-radius: 8px;
     cursor: pointer;
@@ -137,6 +137,72 @@ h1 {
     margin: 0 5px;
 }
 
+/*
+ * Styles for the win modal
+ */
+ /* The Modal (background) */
+.modal {
+    /*display: none;  Hidden by default*/
+    width: 100%;
+    height: 100%;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.3);
+
+}
+
+
+/* Modal Content */
+.modal-content {
+    margin: 15% auto;
+    width: 70%;
+    position: absolute;
+    background-color: #fff;
+    right: 0;
+    left: 0;
+    border: 2px solid gray;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+/* Modal Header */
+.modal-header h2{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #02ccba;
+    color: white;
+}
+
+
+/* Modal Body */
+.modal-body {
+    padding: 10px 20px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* The Close Button */
+.closeBtn {
+    color: #111;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeBtn:hover,
+.closeBtn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 /*Media queries*/
 @media screen and (max-width: 500px) {
@@ -149,7 +215,10 @@ h1 {
         height: 75px;
         width: 75px;
     }
-    
+
+    .modal-content {
+        width: 300px;
+}        
 }
 
 @media screen and (min-width: 501px) and (max-width: 700px) {
