@@ -108,12 +108,20 @@ function checkMatch() {
     }
     /*not a matching pair*/
     else {
+            const card = document.querySelectorAll('.deck, .card');
+            for (i=0; i< card.length; i++){
+            card[i].style.cursor = 'none';
+        }
         setTimeout(function() {
             showCardList[0].classList.remove('show');
             showCardList[1].classList.remove('show');
             showCardList[0].classList.toggle('mismatch');
             showCardList[1].classList.toggle('mismatch');
             showCardList.splice(0, 2);
+            for (i=0; i< card.length; i++){
+                card[i].style.cursor = 'pointer';
+        }
+
         }, 1500);
         showCardList[0].classList.toggle('mismatch');
         showCardList[1].classList.toggle('mismatch');
@@ -145,6 +153,7 @@ function starsPanel() {
 };
 
 
+/*reset features*/
 const grabStars = document.querySelector('.stars');
 
 function resetStars() {
@@ -196,16 +205,20 @@ const flipCard = function(e) {
             winModal();
         }, 1000);
         clearInterval(interval);
-        /*stop timer and display time*/
     }
 };
 
 /*Modal*/
-var modal = document.querySelector('#myModal');
+var modal = document.querySelector('.modal');
 var closeBtn = document.querySelector(".closeBtn");
  
 function winModal() {
+    const finalTime = document.querySelector('.finalTime');
+    const finalStars = document.querySelector('.finalStars');
+    finalTime.innerHTML = `${mins}:${secs}`;
+    finalStars.innerHTML = starCounter;
     modal.style.display = "block";
+
 }
 
 closeBtn.onclick = function() {
