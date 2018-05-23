@@ -123,9 +123,13 @@ function checkMatch() {
 
 /*star rating/lives counter*/
 const wrongMove = document.querySelector('.wrongMove');
+let wrongMoveCounter = 0;
 
 function starsPanel() {
-    if (moveCount % 3 === 0) {
+    if (showCardList[0].innerHTML !== showCardList[1].innerHTML){
+        wrongMoveCounter++;
+    }
+    if (wrongMoveCounter % 3 === 0) {
         const getStar = document.querySelector('.fa-star');
         getStar.remove();
         starCounter--;
@@ -159,6 +163,7 @@ function reset() {
     starCounter = 3;
     moveCount = 0;
     grabMoves.textContent = 0;
+    wrongMoveCounter = 0;
     wrongMove.textContent = 3;
     secs = 0;
     mins = 0;
