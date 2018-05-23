@@ -1,5 +1,3 @@
-/* Reassign each card with a shuffled icon */
-
 /*shuffled icon array*/
 const cardArray = ['fa-diamond',
     'fa-diamond',
@@ -19,13 +17,6 @@ const cardArray = ['fa-diamond',
     'fa-bicycle'
 ];
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML--ME: attach i to li???
- *   - add each card's HTML to the page
- */
-
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(cardArray) {
     var currentIndex = cardArray.length,
@@ -42,9 +33,10 @@ function shuffle(cardArray) {
     return cardArray;
 }
 
-/*ME:  add each element[i] in JS array to the existing li's in html*/
-/*attach card(li) to UL */
-
+/* Create board:Display the cards on the page
+ *   - loop through each card and create its HTML
+ *   - add each card's HTML to the page
+ */
 
 const cardFragment = document.createDocumentFragment();
 const grabDeck = document.querySelector('.deck');
@@ -65,11 +57,12 @@ function createBoard() {
 
 createBoard();
 
-let mins = 0; //todo: figure out how to add a leading zero
+/*timer*/
+let mins = 0;
 let secs = 0;
 let interval;
 
-let isGameOn = false; /*is game running? set to no. until card clicked (timer set)*/
+let isGameOn = false; 
 
 function timer() {
     if (!isGameOn) {
@@ -106,12 +99,15 @@ let moveCount = 0;
 const grabMoves = document.querySelector('.moves');
 
 function checkMatch() {
+    /*matchin pair*/
     if (showCardList[0].innerHTML === showCardList[1].innerHTML) {
         showCardList[0].classList.add('match');
         showCardList[1].classList.add('match');
         showCardList.splice(0, 2);
         matchCount++;
-    } else /*if (showCardList[0].innerHTML !== showCardList[1].innerHTML)*/ {
+    }
+    /*not a matching pair*/
+    else {
         setTimeout(function() {
             showCardList[0].classList.remove('show');
             showCardList[1].classList.remove('show');
@@ -121,13 +117,11 @@ function checkMatch() {
         }, 1500);
         showCardList[0].classList.toggle('mismatch');
         showCardList[1].classList.toggle('mismatch');
-        /*remove star function*/
-        moveCount++;
-        grabMoves.textContent++;
         starsPanel();
     };
 };
 
+/*star rating/lives counter*/
 const wrongMove = document.querySelector('.wrongMove');
 
 function starsPanel() {
@@ -141,7 +135,7 @@ function starsPanel() {
         if (starCounter === 0) {
             alert('you\'ve lost. Give it another go!');
             clearInterval(interval);
-            /*reset game modal*/
+            /*reset game modal?*/
         }
     }, 0);
 };
@@ -169,6 +163,7 @@ function reset() {
     secs = 0;
     mins = 0;
     clearInterval(interval);
+    document.querySelector('.timer').innerHTML = `0:0`;
     createBoard();
     resetStars();
     isGameOn = false;
@@ -186,6 +181,8 @@ const flipCard = function(e) {
     /*check if two showing cards match function*/
     if (showCardList.length === 2) {
         checkMatch();
+        moveCount++;
+        grabMoves.textContent++;
     };
 
     /*win game, run modal*/
@@ -198,31 +195,25 @@ const flipCard = function(e) {
     }
 };
 
-const resetIcon = document.querySelector('.reset');
-
-// Get the modal
+/*Modal*/
 var modal = document.querySelector('#myModal');
-
-// Get the <span> element that closes the modal
 var closeBtn = document.querySelector(".closeBtn");
-
-// When the user clicks the button, open the modal 
+ 
 function winModal() {
     modal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
 closeBtn.onclick = function() {
     modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target === modal) {
         modal.style.display = "none";
     }
 }
 
+const resetIcon = document.querySelector('.reset');
 grabDeck.addEventListener('click', timer);
 grabDeck.addEventListener('click', flipCard);
 resetIcon.addEventListener('click', reset);
