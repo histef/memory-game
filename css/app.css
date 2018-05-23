@@ -81,6 +81,7 @@ h1 {
 
 .deck .card.mismatch {
     background-color: red;
+    cursor: none;
 }
 
 /*
@@ -151,10 +152,12 @@ h1 {
 .modal-content {
     margin: 15% auto;
     width: 70%;
+    height: 300px;
     position: absolute;
     background-color: #fff;
     right: 0;
     left: 0;
+    overflow-y: scroll;
     border: 2px solid gray;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
@@ -179,6 +182,10 @@ h1 {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.modal-body ul {
+    padding: 15px;
 }
 
 
