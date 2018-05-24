@@ -19,7 +19,7 @@ const cardArray = ['fa-diamond',
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(cardArray) {
-    var currentIndex = cardArray.length,
+    let currentIndex = cardArray.length,
         temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
@@ -70,6 +70,7 @@ function timer() {
     }
 }
 
+const tempDisableEvent = document.querySelectorAll('body, .deck, .card');
 /*Match-Not Match Function*/
 function checkMatch() {
     /*matching pair*/
@@ -81,9 +82,9 @@ function checkMatch() {
     }
     /*not a matching pair*/
     else {
-        const card = document.querySelectorAll('.deck, .card');
-        for (i = 0; i < card.length; i++) {
-            card[i].style.cursor = 'none';
+        for (let i = 0; i < tempDisableEvent.length; i++) {
+            tempDisableEvent[i].style.cursor = 'none';
+            tempDisableEvent[i].removeEventListener('click', flipCard);
         }
         setTimeout(function() {
             showCardList[0].classList.remove('show');
@@ -91,8 +92,9 @@ function checkMatch() {
             showCardList[0].classList.toggle('mismatch');
             showCardList[1].classList.toggle('mismatch');
             showCardList.splice(0, 2);
-            for (i = 0; i < card.length; i++) {
-                card[i].style.cursor = 'pointer';
+            for (i = 0; i < tempDisableEvent.length; i++) {
+                tempDisableEvent[i].style.cursor = 'pointer';
+                tempDisableEvent[i].addEventListener('click', flipCard);
             }
 
         }, 1500);
@@ -116,15 +118,24 @@ function starsPanel() {
         starCounter--;
         wrongMove.textContent--;
     }
-    setTimeout(function() {
-        if (starCounter === 0) {
-            alert('you\'ve lost. Give it another go!');
-            clearInterval(interval);
-            /*reset game modal?*/
-        }
-    }, 0);
+    if (starCounter === 0) {
+        gameLost();
+    }
 };
 
+
+/*lose game function*/
+const tempDisableCard = document.querySelectorAll('.deck, .card');
+
+function gameLost(){
+    for (let i = 0; i < tempDisableCard.length; i++) {
+        tempDisableCard[i].removeEventListener('click', flipCard);
+    }
+    setTimeout(function() {
+        alert('you\'ve lost. Give it another go!');
+        clearInterval(interval);
+    }, 0);
+}
 
 /*
  *Reset features
@@ -134,7 +145,7 @@ const resetIcon = document.querySelector('.reset');
 
 function resetStars() {
     grabStars.innerHTML = '';
-    for (i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i++) {
         const createStar = document.createElement('li');
         createStar.innerHTML = `<i class="fa fa-star"></i>`;
         grabStars.appendChild(createStar);
@@ -192,8 +203,9 @@ const flipCard = function(e) {
 /* Win Modal
 * Basic modal code is attributed to w3schools.com
 */
-var modal = document.querySelector('.modal');
-var closeBtn = document.querySelector(".closeBtn");
+const modal = document.querySelector('.modal');
+const playAgainBtn = document.querySelector('.play-again-btn');
+const closeBtn = document.querySelector(".closeBtn");
 
 function winModal() {
     const finalTime = document.querySelector('.finalTime');
@@ -201,6 +213,11 @@ function winModal() {
     finalTime.innerHTML = `${mins}:${secs}`;
     finalStars.innerHTML = starCounter;
     modal.style.display = "block";
+}
+
+playAgainBtn.onclick = function() {
+    reset();
+    modal.style.display = "none";
 }
 
 closeBtn.onclick = function() {

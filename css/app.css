@@ -55,7 +55,7 @@ h1 {
     height: 125px;
     width: 125px;
     background: #2e3d49;
-    font-size: 0; /*changes when card is opened to show icon*/
+    font-size: 20px; /*changes when card is opened to show icon*/
     color: #ffffff;
     border-radius: 8px;
     cursor: pointer;
@@ -172,15 +172,36 @@ h1 {
 
 .modal-body {
     padding: 10px 20px;
-    width: 50%;
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
 }
 
 .modal-body ul {
-    padding: 15px;
+    padding: 0 15px;
 }
 
+.play-again {
+    display: flex;
+    flex-wrap: wrap;    
+}
+
+.play-again-p {
+    min-width: 90px;
+    flex: 2;
+    margin: 0;
+}
+
+.play-again-btn{
+    flex: 1;
+    height: 35px;
+    min-width: 90px;
+    align-self: center;
+    background-color: #e6e5f4;
+    border: 2px solid #02ccba;
+    border-radius: 15px;
+    padding: 5px;
+}
 .closeBtn {
     color: black;
     float: right;
@@ -227,5 +248,9 @@ h1 {
 @media screen and (min-width: 1100px) {
     .score-panel {
         width: 550px;
+    }
+
+    .modal-content {
+        width: 700px;
     }
 }
