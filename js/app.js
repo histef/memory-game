@@ -189,7 +189,9 @@ const flipCard = function(e) {
     }
 };
 
-/* Win Modal*/
+/* Win Modal
+* Basic modal code is attributed to w3schools.com
+*/
 var modal = document.querySelector('.modal');
 var closeBtn = document.querySelector(".closeBtn");
 
