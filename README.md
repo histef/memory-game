@@ -6,7 +6,7 @@ Simply click on a card and try to find the other matching card in the deck. Hit 
 #### Goal: Find all 8 matching pairs before you run out of lives.
 
 ## Languages Used
-..* [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+* [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [JavaScript](https://www.javascript.com/)
 
