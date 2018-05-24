@@ -97,7 +97,7 @@ function checkMatch() {
                 tempDisableEvent[i].addEventListener('click', flipCard);
             }
 
-        }, 1500);
+        }, 1000);
         showCardList[0].classList.toggle('mismatch');
         showCardList[1].classList.toggle('mismatch');
         starsPanel();
@@ -128,13 +128,11 @@ function starsPanel() {
 const tempDisableCard = document.querySelectorAll('.deck, .card');
 
 function gameLost(){
-    for (let i = 0; i < tempDisableCard.length; i++) {
-        tempDisableCard[i].removeEventListener('click', flipCard);
-    }
     setTimeout(function() {
         alert('you\'ve lost. Give it another go!');
         clearInterval(interval);
-    }, 0);
+        reset();
+    }, 1100);
 }
 
 /*
