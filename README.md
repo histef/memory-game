@@ -1,20 +1,15 @@
 # Memory Game Project
+This is an online memory game similar to the physical memory card game.
 
-## Table of Contents
+## How to Play
+Simply click on a card and try to find the other matching card in the deck. Hit the reset button if you want to start all over.
+###Goal: Find all 8 matching pairs before you run out of lives.
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## Languages Used
+[HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+[CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[JavaScript](https://www.javascript.com/)
 
-## Instructions
-
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+## Dependencies
+[Font Awesome](https://fontawesome.com/)
+[Google Fonts](https://fonts.google.com/)
