@@ -37,8 +37,7 @@ h1 {
  * Styles for the deck of cards
  */
 
-/*container for the cards*/
-.deck { 
+.deck {
     width: 660px;
     min-height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
@@ -81,7 +80,6 @@ h1 {
 
 .deck .card.mismatch {
     background-color: red;
-    cursor: none;
 }
 
 /*
@@ -116,7 +114,7 @@ h1 {
 
 .moveCounter{
     margin: 0 5px;
-    padding: 0;    
+    padding: 0;
 }
 
 .time {
@@ -134,7 +132,6 @@ h1 {
  * Styles for the win modal
  */
 
- /* The Modal Overlay */
 .modal {
     display: none;
     width: 100%;
@@ -147,8 +144,6 @@ h1 {
 
 }
 
-
-/* Modal Content */
 .modal-content {
     margin: 15% auto;
     width: 70%;
@@ -162,7 +157,6 @@ h1 {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-/* Modal Header */
 .modal-header h2{
     width: 50%;
     margin-left: auto;
@@ -170,13 +164,11 @@ h1 {
 }
 
 .modal-header {
-    padding: 2px 16px;
+    padding: 3px 10px;
     background-color: #02ccba;
     color: white;
 }
 
-
-/* Modal Body */
 .modal-body {
     padding: 10px 20px;
     width: 50%;
@@ -188,18 +180,16 @@ h1 {
     padding: 15px;
 }
 
-
-/* The Close Button */
 .closeBtn {
-    color: #111;
+    color: black;
     float: right;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
 }
 
 .closeBtn:hover,
 .closeBtn:focus {
-    color: #000;
+    color: gray;
     text-decoration: none;
     cursor: pointer;
 }
@@ -209,7 +199,7 @@ h1 {
     .deck {
         width: 400px;
         min-height: 410px;
-}
+    }
 
     .deck .card {
         height: 75px;
@@ -218,14 +208,14 @@ h1 {
 
     .modal-content {
         width: 300px;
-}        
+    }
 }
 
 @media screen and (min-width: 501px) and (max-width: 700px) {
     .deck {
         width: 500px;
         min-height: 540px;
-}
+    }
 
     .deck .card {
         height: 100px;
@@ -233,11 +223,8 @@ h1 {
     }
 }
 
-
-
 @media screen and (min-width: 1100px) {
     .score-panel {
         width: 550px;
     }
-
 }

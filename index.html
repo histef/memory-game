@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matching Game</title>
     <meta name="description" content="">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -9,33 +10,37 @@
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-
     <div class="container">
+<!--header-->
         <header>
             <h1>Matching Game</h1>
         </header>
-
+<!--Score Panel-->
         <section class="score-panel">
         	<ul class="stars">
         		<li><i class="fa fa-star"></i></li>
         		<li><i class="fa fa-star"></i></li>
         		<li><i class="fa fa-star"></i></li>
         	</ul>
+<!--Lives Count-->
             <div class="lives">
         	   <span class="wrongMove">3</span> Live(s)
             </div>
+<!--Move Count-->
             <div class="moveCounter">
                 <span class="moves">0</span> Move(s)
             </div>
+<!--Time-->
             <div class="time">
-                <span>Time: <span class="timer">0:0</span></span>
+                <span>Time: <span class="timer">0:0</span>
             </div>
+<!--Reset Button-->
             <div class="reset">
         		<i class="fa fa-repeat"></i>
         	</div>
         </section>
 
-<!--adds all the cards-->
+<!--Card Deck-->
         <ul class="deck">
             <li class="card">
                 <i class="fa fa-diamond"></i>
@@ -73,7 +78,7 @@
             <li class="card">
                 <i class="fa fa-bomb"></i>
             </li>
-            <li class="card"> <!--DELETE open later-->
+            <li class="card">
                 <i class="fa fa-bolt"></i>
             </li>
             <li class="card">
@@ -89,7 +94,7 @@
     </div>
 
 <!-- The Modal -->
-    <div id="myModal" class="modal">
+    <div class="modal">
       <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
@@ -102,7 +107,7 @@
                 	<li>Time completed: <span class="finalTime">0:0</span></li>
                 	<li>Star rating: <span class="finalStars">3</span></li>
                 </ul>
-            	<p>Wanna try to do better?</p>
+            	<p>Try to beat your score!</p>
             </div>
         </div>
     </div>
